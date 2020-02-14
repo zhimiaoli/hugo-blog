@@ -40,7 +40,7 @@ organization = "Hugo"
 link = "https://zzossig.io/ko"
 
 # sidebar
-enableBio = true
+enableBio = false
 enableBioImage = true
 enableSidebar = true
 enableSidebarTags = true
@@ -51,7 +51,7 @@ enableListSidebarTitles = true
 enableToc = true
 hideToc = false
 tocFolding = true
-tocPosition = "outer" # inner, outer
+tocPosition = "inner" # inner, outer
 enableTocSwitch = true
 itemsPerCategory = 5
 sidebarPosition = "right"
@@ -75,7 +75,7 @@ busuanziPagePV = true
 # comment
 enableComment = true
 disqus_shortname = ""
-commento = true
+commento = false
 
 [gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
   owner = ""              # Your GitHub ID
@@ -84,8 +84,8 @@ commento = true
   clientSecret = ""       # Your client secret
 
 [utterances]       # https://utteranc.es/
-  owner = ""              # Your GitHub ID
-  repo = ""               # The repo to store comments
+  owner = "zhimiaoli"              # Your GitHub ID
+  repo = "lizhimiao-dot-com-comment"               # The repo to store comments
 
 [gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
   owner = ""              # Your GitHub ID
