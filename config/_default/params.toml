@@ -1,6 +1,6 @@
-logoText = "Zzo"
+logoText = "lizhimiao‘s Blog"
 logoType = "short" # long, short
-description = "The Zzo theme for Hugo example site."
+description = "lizhimiao’s 的博客."
 custom_css = []
 custom_js = []
 useFaviconGenerator = true # https://www.favicon-generator.org/
@@ -19,11 +19,11 @@ enablePhotoSwipe = true
 enableSearch = true
 enableSearchHighlight = true
 enableGoToTop = true
-enableWhoami = true
+enableWhoami = false
 summaryShape = "classic" # card, classic, compact
 searchResultPosition = "main" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
-archivePaginate = 13
+archivePaginate = 10
 paginateWindow = 1
 talksPaginate = 5
 talksGroupByDate = "2006"
@@ -51,14 +51,14 @@ enableListSidebarTitles = true
 enableToc = true
 hideToc = false
 tocFolding = true
-tocPosition = "inner" # inner, outer
+tocPosition = "outer" # inner, outer
 enableTocSwitch = true
 itemsPerCategory = 5
 sidebarPosition = "right"
 tocLevels = ["h2", "h3", "h4"]
 
 # footer
-showPoweredBy = true
+showPoweredBy = false
 showFeedLinks = true
 showSocialLinks = true
 enableLangChange = true
@@ -67,7 +67,7 @@ enableThemeChange = true
 # service
 googleTagManager = "" # GTM-XXXXXX
 baiduAnalytics = ""
-enableBusuanzi = false
+enableBusuanzi = true
 busuanziSiteUV = true
 busuanziSitePV = true
 busuanziPagePV = true
@@ -75,7 +75,7 @@ busuanziPagePV = true
 # comment
 enableComment = true
 disqus_shortname = ""
-commento = false
+commento = true
 
 [gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
   owner = ""              # Your GitHub ID
@@ -123,8 +123,8 @@ commento = false
   email = "mailto:your@email.com"
   phone = ""
   facebook = "http://example.org/"
-  twitter = "http://example.org/"
-  github = "https://github.com/zzossig/hugo-theme-zzo"
+  twitter = "https://twitter.com/_lizhimiao"
+  github = "https://github.com/zhimiaoli"
   stack-overflow = ""
   instagram = ""
   google-plus = ""
@@ -134,9 +134,9 @@ commento = false
   linkedin = ""
   pinterest = ""
   stack-exchange = ""
-  telegram = ""
+  telegram = "lizhimiao"
   steam = ""
-  weibo = ""
+  weibo = "lizhimiao"
   douban = ""
   csdn = ""
   gitlab = ""
@@ -165,8 +165,8 @@ commento = false
   name = "twitter"
 
 [[footerLinks]]
-  name = ""
-  link = ""
+  name = "论坛"
+  link = "https://miao.li"
 [[footerLinks]]
   name = ""
   link = ""

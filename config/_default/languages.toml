@@ -1,12 +1,12 @@
 [en]
-  title = "Hugo Zzo Theme"
+  title = "lizhimiao‘s Blog"
   languageName = "English"
   weight = 2
-  languagedir = "ltr"
+  languagedir = "en"
   contentdir = "content/en"
 
 [zh]
-  title = "Hugo Zzo Theme"
+  title = "lizhimiao的博客"
   languageName = "中文"
   weight = 1
   languagedir = "zh"
