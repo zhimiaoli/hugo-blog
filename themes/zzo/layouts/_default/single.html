@@ -4,20 +4,26 @@
   {{ if $.Param "enableBreadcrumb" }}
     {{ partial "body/breadcrumb" . }}
   {{ end }}
+  {{ if $.Param "hideSingleContentsWhenJSDisabled" }}
   <noscript>
-    {{ i18n "nojs-message" }}
+    <div class="single__nojs">
+      {{ i18n "nojs-message" }}
+    </div>
   </noscript>
-  <div class="single hide">
-    <script>document.querySelector('.single').classList.remove('hide')</script>
-    <h2 class="single__title">{{ .Title }}</h2>
+  {{ end }}
+  <div class="single {{ if $.Param "hideSingleContentsWhenJSDisabled" }}hide{{ end }}">
+    <div class="single__nojs">{{ i18n "nojs-message" }}</div>
+    <script>document.querySelector('.single').classList.remove('hide'); document.querySelector('.single__nojs').classList.add('hide');</script>
+    <h2 class="single__title" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ .Title }}</h2>
     <div class="single__meta">
       {{ partial "body/infos" . }}
       {{ partial "body/tags" . }}
     </div>
-    <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+    <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
       {{ partial "body/toc" . }}
       {{ .Content }}
     </article>
+    
     {{ partial "script/codeblock-script" . }}
     {{ partial "body/share" . }}
     {{ partial "body/donation" . }}
@@ -85,7 +91,13 @@
         }
       }
 
-      document.getElementsByClassName('navbar__burger')[0].classList.remove('is-active');
+      var navCollapseBtn = document.querySelector('.navbar__burger');
+      var navCollapse = document.getElementsByClassName('navbarm__collapse')[0];
+      if (navCollapse) {
+        navCollapse.setAttribute('data-open', false);
+        navCollapse.style.maxHeight = 0;
+        navCollapseBtn.classList.remove('is-active');
+      }
       document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
       document.getElementsByClassName('mobile-search')[0].classList.add('hide');
     },
