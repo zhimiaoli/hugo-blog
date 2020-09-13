@@ -1,0 +1,14 @@
+{{/* used for photos list */}}
+{{ define "main" }}
+	<article class="h-entry collection">
+		<section class="intro" aria-label="introduction">
+			{{- .Content -}}
+		</section>
+		<ul class="latest-photos content">
+			{{- $section := where .Data.Pages "Section" .Section -}}
+			{{- range $section -}}
+				<li class="post photo-post">{{ partial "summary-photo.html" . }}</li>
+			{{ end }}
+		</ul>
+	</article>
+{{ end }}

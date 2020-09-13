@@ -1,0 +1,23 @@
+  <!-- From Indiego partials/micro-schema.html https://github.com/growdigital/indiego/blob/master/themes/indiegomin/layouts/partials/micro-schema.html -->
+  <!-- Schema.org markup -->
+  <meta itemprop="headline" content="{{ .Title }}">
+  <meta itemprop="description" content="{{ .Summary }}">
+  {{ if .Params.image }}
+  <meta itemprop="image" content="{{ .Site.BaseURL }}{{ .Params.image }}">
+  {{ else if eq .Type "photos" }}
+    {{ with .Resources }}
+    {{ with .GetMatch "{*.*,*.jpg,*.png,*.jpeg}" }}{{ $photo := .Resize "580x275" }}
+      {{ with $photo }}<meta itemprop="image" content="{{ .Permalink }}">{{ end }}
+    {{ end }}{{ end }}
+  {{ else }}
+  <meta itemprop="image" content="{{ .Site.BaseURL }}{{ .Site.Params.publisherLogo }}">
+  {{ end }}
+  <meta itemprop="author" content="{{ .Site.Author.name }}">
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="{{ .Site.BaseURL }}/{{ .Site.Params.publisherLogo }}">
+      <meta itemprop="width" content="{{ .Site.Params.publisherLogoWidth }}">
+      <meta itemprop="height" content="{{ .Site.Params.publisherLogoHeight }}">
+    </div>
+    <meta itemprop="name" content="{{ .Site.Params.publisher }}">
+  </div>

@@ -1,0 +1,56 @@
+{{ if ne .Type "notes" -}}
+	<div class="entry-meta">
+		<p><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+			<span class="number">{{- .Date.Format "2" }}</span> {{ .Date.Format "January 2006" -}}
+			</time>
+		</p>
+	</div>
+{{- end }}
+{{ if eq .Type "notes" -}}
+	<div class="summary">
+		{{ .Content }}
+		<div class="entry-notes"><p><a href="{{ .Permalink }}">Canonical URL for {{ .Title }}</a>.</p></div>
+	</div>
+{{ else if eq .Type "lens" -}}
+	<div class="summary">
+		{{ if (isset .Params "writer")}}<p>Written by {{ .Params.writer }} on {{ .Params.publication }}.</p>{{ end }}
+		{{- .Content }}
+		<p><a href="{{ .Params.posturl }}">Read ‘{{ .Title }}’{{ with .Params.publication }} on the {{ . }} site{{ end }}</a>.</p>
+	</div>
+	<div class="entry-notes">
+		<p>
+			{{ if (isset .Params "tags")}}
+			Tagged with:
+			{{ range $index, $tags := .Params.tags }}
+				{{- if gt $index 0 }}, {{ end }}
+				<a href='{{ "tags/" | relURL }}{{ . | urlize }}'>{{ . }}</a>
+			{{- end }}.
+			{{- end }}
+		</p>
+	</div>
+{{ else }}
+	<div class="summary">
+		<p>
+		{{- .Summary }}
+		</p>
+		<p><a href="{{ .Permalink }}">Read {{ .Title }}</a>.</p>
+	</div>
+	<div class="entry-notes">
+		<p>
+			{{ if (isset .Params "categories")}}
+			Categorised under:
+			{{ range $index, $categories := .Params.categories }}
+				{{- if gt $index 0 }}, {{ end -}}
+				<a href='{{ "categories/" | relURL }}{{ . | urlize }}'>{{ . }}</a>
+			{{- end }}.
+			{{- end }}
+			{{ if (isset .Params "tags")}}
+			Tagged with:
+			{{ range $index, $tags := .Params.tags }}
+				{{- if gt $index 0 }}, {{ end }}
+				<a href='{{ "tags/" | relURL }}{{ . | urlize }}'>{{ . }}</a>
+			{{- end }}.
+			{{- end }}
+		</p>
+	</div>
+{{ end }}

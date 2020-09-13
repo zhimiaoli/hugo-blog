@@ -1,0 +1,18 @@
+<style>
+    {{ if .Params.colours }}
+    :root {
+        /* define colour theme variables to override default styles */
+        --primary-bg: {{ $.Param "colours.primary-bg" | safeCSS }};
+        --secondary-bg: {{ $.Param "colours.secondary-bg" | safeCSS }};
+        --text: {{ $.Param "colours.text" | safeCSS }};
+        --linktext: {{ $.Param "colours.linktext" | safeCSS }};
+        --darklinktext: {{ $.Param "colours.darklinktext" | safeCSS }};
+        --brilliant: {{ $.Param "colours.brilliant" | safeCSS }};
+        --tab-two: {{ $.Param "colours.tab-two" | safeCSS }};
+        --tab-three: {{ $.Param "colours.tab-three" | safeCSS }};
+        --tab-four: {{ $.Param "colours.tab-four" | safeCSS }};
+        --tab-five: {{ $.Param "colours.tab-five" | safeCSS }};
+        --tab-six: {{ $.Param "colours.tab-six" | safeCSS }};
+    }
+    {{ end }}
+</style>

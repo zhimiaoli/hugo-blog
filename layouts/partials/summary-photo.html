@@ -1,0 +1,13 @@
+<a href="{{.Permalink}}">
+    <img
+    {{ with .Resources }}
+        {{ with .GetMatch "{*.*,*.jpg,*.png,*.jpeg}" }}
+                {{ $photo := .Fill "600x600" }}
+                {{ with $photo }}
+                    src='{{ .Permalink }}'  
+                    width="{{ $photo.Width }}" height="{{ $photo.Height }}"
+                {{ end }}
+        {{ end }}
+    {{ end }}
+    alt="{{ .Params.imagealt }}"/>
+</a>

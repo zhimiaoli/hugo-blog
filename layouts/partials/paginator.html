@@ -1,0 +1,48 @@
+{{/* based on the Hugo pagination template, adjusted to my needs */}}
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+	{{ $ellipsed := false }}
+	{{ $shouldEllipse := false }}
+<nav class="pagination" role="navigation" aria-label="Pagination">
+<ul>
+
+	{{ if $pag.HasPrev }}{{/* if there’s a previous page, show link for previous page */}}
+		<li>
+			<a class="previous-page" href="{{ $pag.Prev.URL }}">Previous page</a>
+		</li>
+	{{ end }}
+
+	{{ range $pag.Pagers }}
+	
+		{{ $right := sub .TotalPages .PageNumber }}
+    	{{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
+    	{{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+		{{ if $showNumber }}
+			{{ $ellipsed = false }}
+			{{ $shouldEllipse = false }}
+		{{ else }}
+			{{ $shouldEllipse = not $ellipsed }}
+			{{ $ellipsed = true }}
+		{{ end }}
+
+		{{ if $showNumber }}
+			{{ if eq . $pag }}{{/* if current page */}}
+				<li class="number" aria-label="Current page" aria-current="true">Page {{ .PageNumber }} of {{ .TotalPages }}</li>
+			{{ else }}
+				<li class="number"><a href="{{ .URL }}" aria-label="Go to page {{ .PageNumber }}">{{ .PageNumber }}</a></li>
+			{{ end }}
+    	{{ else if $shouldEllipse }}
+    		<li class="ellipsis"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
+		{{ end }}
+		
+	{{ end }}
+
+	{{ if $pag.HasNext }}{{/* if there’s a next page, show link for next page */}}
+		<li>
+			<a class="next-page" href="{{ $pag.Next.URL }}">Next page</a>
+		</li>
+	{{ end }}
+	
+</ul>
+</nav>
+{{ end }}

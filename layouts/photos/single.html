@@ -1,0 +1,9 @@
+{{/* used for individual photo posts */}}
+{{ define "main" }}
+<article class="h-entry single">
+	<h1 class="page-title p-name dt-published">{{ .Page.Title }}</h1>
+	<div class="entry-content">
+		{{- .Content -}}
+	</div>
+</article>
+{{ end }}
