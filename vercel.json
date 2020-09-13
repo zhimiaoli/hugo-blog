@@ -1,0 +1,7 @@
+{
+    "build": {
+      "env": {
+        "HUGO_VERSION": "extended_0.74.3"
+      }
+    }
+  }
